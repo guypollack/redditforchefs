@@ -7,9 +7,16 @@ export const feedSlice = createSlice({
     feedIsLoading: false,
     feedFailedToLoad: false,
     errorStatus: null,
-    posts: []
+    posts: [],
+    showMoreText: []
   },
-  reducers: {},
+  reducers: {
+    initialiseShowMoreText(state, action) {
+      console.log(action.payload);
+      state.showMoreText = action.payload;
+      
+    }
+  },
   extraReducers: (builder) => {
     builder
       .addCase(generateFeed.pending, (state) => {
@@ -37,4 +44,5 @@ export const filterUnstickiedPosts = (state) => state.feed.posts.filter(post => 
 export const feedIsLoading = (state) => state.feed.feedIsLoading;
 export const feedFailedToLoad = (state) => state.feed.feedFailedToLoad;
 export const selectErrorStatus = (state) => state.feed.errorStatus;
+export const { initialiseShowMoreText } = feedSlice.actions;
 export default feedSlice.reducer;
