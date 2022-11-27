@@ -12,9 +12,14 @@ export const feedSlice = createSlice({
   },
   reducers: {
     initialiseShowMoreText(state, action) {
-      console.log(action.payload);
+      // console.log(action.payload);
       state.showMoreText = action.payload;
-      
+    },
+    showMoreTextByIndex(state, action) {
+      state.showMoreText[action.payload] = true;
+    },
+    showLessTextByIndex(state, action) {
+      state.showMoreText[action.payload] = false;
     }
   },
   extraReducers: (builder) => {
@@ -44,5 +49,6 @@ export const filterUnstickiedPosts = (state) => state.feed.posts.filter(post => 
 export const feedIsLoading = (state) => state.feed.feedIsLoading;
 export const feedFailedToLoad = (state) => state.feed.feedFailedToLoad;
 export const selectErrorStatus = (state) => state.feed.errorStatus;
-export const { initialiseShowMoreText } = feedSlice.actions;
+export const selectShowMoreText = (state) => state.feed.showMoreText;
+export const { initialiseShowMoreText, showMoreTextByIndex, showLessTextByIndex } = feedSlice.actions;
 export default feedSlice.reducer;

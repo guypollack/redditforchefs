@@ -1,15 +1,22 @@
-export function Post({data}) {
-  // console.log(data);
-  // console.log(data.post_hint);
+export function Post({id, data, showMore, handleClickShowMore, handleClickShowLess}) {
+  
   let content;
+  
   if (data.selftext) {
     if (data.selftext.length <= 200) {
-      content = <p>data.selftext.length</p>
+      content = <p>{data.selftext}</p>
+    } else if (showMore) {
+      content = (
+        <div>
+          <p>{data.selftext}</p>
+          <button id={`Show-Less-Button-${id}`} onClick={handleClickShowLess}>Show Less</button>
+        </div>
+      )
     } else {
       content = (
         <div>
           <p>{data.selftext.slice(0,200)}...</p>
-          <button>See More</button>
+          <button id={`Show-More-Button-${id}`} onClick={handleClickShowMore}>Show More</button>
         </div>
       )
     }
@@ -18,10 +25,6 @@ export function Post({data}) {
   if (data.post_hint === "image") {
       content = <img src={data.url} style={{width: 200}} />;
   }
-    // case "hosted:video":
-    //   console.log(data)
-    //   content = <video controls autoPlay type="video/MP4" src={data.media.reddit_video.fallback_url} style={{width: 200}} />
-    //   break;
 
   return (
     <div>
