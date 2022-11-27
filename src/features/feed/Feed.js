@@ -1,7 +1,9 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { selectPosts, feedIsLoading, feedFailedToLoad, selectErrorStatus } from "./feedSlice";
+import { selectPosts, filterUnstickiedPosts, feedIsLoading, feedFailedToLoad, selectErrorStatus } from "./feedSlice";
 import { generateFeed } from "../../util/Reddit";
+import { Post } from "./Post";
+
 
 export function Feed() {
   const dispatch = useDispatch();
@@ -9,8 +11,9 @@ export function Feed() {
     dispatch(generateFeed());
   },[])
   
-  const posts = useSelector(selectPosts);
-  console.log(posts);
+  // const posts = useSelector(selectPosts);
+  const posts = useSelector(filterUnstickiedPosts);
+  // console.log(posts);
   const isLoading = useSelector(feedIsLoading);
   const failedToLoad = useSelector(feedFailedToLoad);
   const errorStatus = useSelector(selectErrorStatus);
@@ -23,11 +26,7 @@ export function Feed() {
   }
   return (
     <div>
-      {posts.map(post => 
-      <div>
-        <h4>{post.title}</h4>
-        <img src={post.url} style={{width: 200}}/>
-      </div>)}
+      {posts.map((post, index) => <Post key={`Post-${index}`}  data={post} />)}
     </div>
 
   )

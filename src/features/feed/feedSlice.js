@@ -32,6 +32,7 @@ export const feedSlice = createSlice({
 })
 
 export const selectPosts = (state) => state.feed.posts;
+export const filterUnstickiedPosts = (state) => state.feed.posts.filter(post => !post.stickied);
 export const feedIsLoading = (state) => state.feed.feedIsLoading;
 export const feedFailedToLoad = (state) => state.feed.feedFailedToLoad;
 export const selectErrorStatus = (state) => state.feed.errorStatus;
