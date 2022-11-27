@@ -3,7 +3,17 @@ export function Post({data}) {
   // console.log(data.post_hint);
   let content;
   if (data.selftext) {
-    content = data.selftext.length <= 200 ? <p>{data.selftext}</p> : <p>{data.selftext.slice(0,200)}...</p>
+    if (data.selftext.length <= 200) {
+      content = <p>data.selftext.length</p>
+    } else {
+      content = (
+        <div>
+          <p>{data.selftext.slice(0,200)}...</p>
+          <button>See More</button>
+        </div>
+      )
+    }
+     
   }
   if (data.post_hint === "image") {
       content = <img src={data.url} style={{width: 200}} />;
