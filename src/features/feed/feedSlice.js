@@ -18,6 +18,7 @@ export const feedSlice = createSlice({
         state.errorStatus = null;
       })
       .addCase(generateFeed.fulfilled, (state, action) => {
+        // console.log(action.payload);
         state.posts = action.payload;
         state.feedIsLoading = false;
         state.feedFailedToLoad = false;
