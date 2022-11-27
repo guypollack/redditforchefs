@@ -34,5 +34,5 @@ export const feedSlice = createSlice({
 export const selectPosts = (state) => state.feed.posts;
 export const feedIsLoading = (state) => state.feed.feedIsLoading;
 export const feedFailedToLoad = (state) => state.feed.feedFailedToLoad;
-export const errorStatus = (state) => state.feed.errorStatus;
+export const selectErrorStatus = (state) => state.feed.errorStatus;
 export default feedSlice.reducer;

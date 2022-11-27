@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { selectPosts, feedIsLoading, feedFailedToLoad, errorStatus } from "./feedSlice";
+import { selectPosts, feedIsLoading, feedFailedToLoad, selectErrorStatus } from "./feedSlice";
 import { generateFeed } from "../../util/Reddit";
 
 export function Feed() {
@@ -12,13 +12,13 @@ export function Feed() {
   const posts = useSelector(selectPosts);
   const isLoading = useSelector(feedIsLoading);
   const failedToLoad = useSelector(feedFailedToLoad);
-  const error = useSelector(errorStatus);
+  const errorStatus = useSelector(selectErrorStatus);
   
   if (isLoading) {
     return <h1>Loading</h1>;
   }
   if (failedToLoad) {
-    return <h1>Request failed... Error code {error}... sorry :(</h1>
+    return <h1>Request failed... Error code {errorStatus}... sorry :(</h1>
   }
   return (
     <div>
