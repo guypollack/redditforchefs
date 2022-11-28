@@ -1,5 +1,7 @@
 export function Post({id, data, handleClickShowMore, handleClickShowLess}) {
   
+  if (data.stickied) return
+
   let content;
   
   if (data.selftext) {
