@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { selectPosts, filterUnstickiedPosts, feedIsLoading, feedFailedToLoad, selectErrorStatus, selectShowMoreText, initialiseShowMoreText, showMoreTextByIndex, showLessTextByIndex } from "./feedSlice";
 import { generateFeed } from "../../util/Reddit";
 import { PostContainer } from "./PostContainer";
+import { selectCurrentSubreddit } from "../subreddits/subredditsSlice";
 
 
 export function Feed() {
@@ -19,7 +20,11 @@ export function Feed() {
   const failedToLoad = useSelector(feedFailedToLoad);
   const errorStatus = useSelector(selectErrorStatus);
   // const showMoreText = useSelector(selectShowMoreText);
+
+  const currentSubreddit = useSelector(selectCurrentSubreddit); // In future: Make one combined thunk to change subreddit and generate feed?
   
+  console.log(currentSubreddit);
+
   const handleClickShowMore = e => {
     // console.log(e.target.id);
     dispatch(showMoreTextByIndex(Number(e.target.id.slice(22))));
@@ -30,8 +35,8 @@ export function Feed() {
   }
 
   useEffect(() => {
-    dispatch(generateFeed());
-  },[])
+    dispatch(generateFeed(currentSubreddit));
+  },[currentSubreddit])
 
   // useEffect(() => {
   //   dispatch(initialiseShowMoreText(new Array(numberOfPosts).fill(false)));

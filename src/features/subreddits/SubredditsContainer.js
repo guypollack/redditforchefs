@@ -5,10 +5,10 @@ import { Subreddit } from "./Subreddit";
 export function SubredditsContainer() {
   const dispatch = useDispatch();
   const currentSubreddit = useSelector(selectCurrentSubreddit);
-  console.log(currentSubreddit);
+  // console.log(currentSubreddit);
   const subreddits = useSelector(selectSubredditUrls);
   const handleClick = e => {
-    alert(e.target.value);
+    // alert(e.target.value);
     dispatch(changeSubreddit(e.target.value));
   }
 

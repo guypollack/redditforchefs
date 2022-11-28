@@ -8,8 +8,8 @@ import { SubredditsContainer } from './features/subreddits/SubredditsContainer';
 function App() {
   return (
     <div className="App">
-      <Feed />
       <SubredditsContainer />
+      <Feed />
     </div>
   );
 }
