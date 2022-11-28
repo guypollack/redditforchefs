@@ -4,7 +4,7 @@ export const generateFeed = createAsyncThunk(
   "feed/generateFeed",
   async (_, thunkAPI) => {
     // const response = await fetch("https://api.spotify.com/v1/search?q=cher&type=artist"); //- used as an test to trigger 401 error
-    const response = await fetch("https://www.reddit.com/r/ChefsKnives.json");
+    const response = await fetch("https://www.reddit.com/r/ChefKnives.json");
     if (!response.ok) {
       return thunkAPI.rejectWithValue(response);
     }
