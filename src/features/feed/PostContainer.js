@@ -27,7 +27,14 @@ export function PostContainer({id, data, handleClickShowMore, handleClickShowLes
   }
 
   if (data.post_hint === "image") {
-      content = <img src={data.url} style={{width: 200}} />;
+    content = <img src={data.url} style={{width: 200}} />;
+  }
+
+  if (data.post_hint === "rich:video") {
+    // console.log(data.media.ombed.html);
+    // console.log("AAAA");
+    const source = data.media.oembed.html.split(" ")[3].slice(5,46);
+    content = <iframe width="585" height="329" src={source}></iframe>
   }
 
   return <Post title={data.title} content={content} />

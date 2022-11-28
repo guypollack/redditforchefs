@@ -13,7 +13,7 @@ export function Feed() {
 
   // const posts = useSelector(selectPosts);
   const posts = useSelector(selectPosts);
-  // console.log(posts);
+  console.log(posts);
   // console.log(posts.map(post => post.showMoreText));
   // const numberOfPosts = posts.length;
   const isLoading = useSelector(feedIsLoading);
@@ -23,7 +23,7 @@ export function Feed() {
 
   const currentSubreddit = useSelector(selectCurrentSubreddit); // In future: Make one combined thunk to change subreddit and generate feed?
   
-  console.log(currentSubreddit);
+  // console.log(currentSubreddit);
 
   const handleClickShowMore = e => {
     // console.log(e.target.id);
