@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, current } from "@reduxjs/toolkit";
 import { generateFeed } from "../../util/Reddit";
 
 export const feedSlice = createSlice({
@@ -8,7 +8,7 @@ export const feedSlice = createSlice({
     feedFailedToLoad: false,
     errorStatus: null,
     posts: [],
-    showMoreText: []
+    // showMoreText: []
   },
   reducers: {
     initialiseShowMoreText(state, action) {
@@ -16,10 +16,12 @@ export const feedSlice = createSlice({
       state.showMoreText = action.payload;
     },
     showMoreTextByIndex(state, action) {
-      state.showMoreText[action.payload] = true;
+      // state.showMoreText[action.payload] = true;
+      state.posts[action.payload].showMoreText = true;
     },
     showLessTextByIndex(state, action) {
-      state.showMoreText[action.payload] = false;
+      // state.showMoreText[action.payload] = false;
+      state.posts[action.payload].showMoreText = false;
     }
   },
   extraReducers: (builder) => {

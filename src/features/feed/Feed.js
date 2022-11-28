@@ -11,15 +11,17 @@ export function Feed() {
   // console.log(initialiseShowMoreText);
 
   // const posts = useSelector(selectPosts);
-  const posts = useSelector(filterUnstickiedPosts);
+  const posts = useSelector(selectPosts);
   // console.log(posts);
-  const numberOfPosts = posts.length;
+  // console.log(posts.map(post => post.showMoreText));
+  // const numberOfPosts = posts.length;
   const isLoading = useSelector(feedIsLoading);
   const failedToLoad = useSelector(feedFailedToLoad);
   const errorStatus = useSelector(selectErrorStatus);
-  const showMoreText = useSelector(selectShowMoreText);
+  // const showMoreText = useSelector(selectShowMoreText);
   
   const handleClickShowMore = e => {
+    // console.log(e.target.id);
     dispatch(showMoreTextByIndex(Number(e.target.id.slice(22))));
   }
 
@@ -31,9 +33,9 @@ export function Feed() {
     dispatch(generateFeed());
   },[])
 
-  useEffect(() => {
-    dispatch(initialiseShowMoreText(new Array(numberOfPosts).fill(false)));
-  },[numberOfPosts])
+  // useEffect(() => {
+  //   dispatch(initialiseShowMoreText(new Array(numberOfPosts).fill(false)));
+  // },[numberOfPosts])
 
   if (isLoading) {
     return <h1>I'm still loading! Wait a min!</h1>;
@@ -43,7 +45,7 @@ export function Feed() {
   }
   return (
     <div>
-      {posts.map((post, index) => <Post key={`Post-${index}`} id={`Post-${index}`} data={post} showMore={showMoreText[index]} handleClickShowMore={handleClickShowMore} handleClickShowLess={handleClickShowLess} />)}
+      {posts.map((post, index) => <Post key={`Post-${index}`} id={`Post-${index}`} data={post} handleClickShowMore={handleClickShowMore} handleClickShowLess={handleClickShowLess} />)}
     </div>
 
   )

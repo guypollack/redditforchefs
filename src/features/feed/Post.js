@@ -1,11 +1,11 @@
-export function Post({id, data, showMore, handleClickShowMore, handleClickShowLess}) {
+export function Post({id, data, handleClickShowMore, handleClickShowLess}) {
   
   let content;
   
   if (data.selftext) {
     if (data.selftext.length <= 200) {
       content = <p>{data.selftext}</p>
-    } else if (showMore) {
+    } else if (data.showMoreText) {
       content = (
         <div>
           <p>{data.selftext}</p>
