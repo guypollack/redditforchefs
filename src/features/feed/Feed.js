@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { selectPosts, filterUnstickiedPosts, feedIsLoading, feedFailedToLoad, selectErrorStatus, selectShowMoreText, initialiseShowMoreText, showMoreTextByIndex, showLessTextByIndex } from "./feedSlice";
 import { generateFeed } from "../../util/Reddit";
-import { Post } from "./Post";
+import { PostContainer } from "./PostContainer";
 
 
 export function Feed() {
@@ -45,7 +45,7 @@ export function Feed() {
   }
   return (
     <div>
-      {posts.map((post, index) => <Post key={`Post-${index}`} id={`Post-${index}`} data={post} handleClickShowMore={handleClickShowMore} handleClickShowLess={handleClickShowLess} />)}
+      {posts.map((post, index) => <PostContainer key={`Post-${index}`} id={`Post-${index}`} data={post} handleClickShowMore={handleClickShowMore} handleClickShowLess={handleClickShowLess} />)}
     </div>
 
   )
