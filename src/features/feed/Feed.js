@@ -42,14 +42,14 @@ export function Feed() {
   //   dispatch(initialiseShowMoreText(new Array(numberOfPosts).fill(false)));
   // },[numberOfPosts])
 
-  if (isLoading) {
-    return <h1>I'm still loading! Wait a min!</h1>;
-  }
+  // if (isLoading) {
+  //   return <h1>I'm still loading! Wait a min!</h1>;
+  // }
   if (failedToLoad) {
     return <h1>Request failed... Error code {errorStatus}... sorry :(</h1>
   }
   return (
-    <div>
+    <div className="feed-flex-container">
       {posts.map((post, index) => <PostContainer key={`Post-${index}`} id={`Post-${index}`} data={post} handleClickShowMore={handleClickShowMore} handleClickShowLess={handleClickShowLess} />)}
     </div>
 

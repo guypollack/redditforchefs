@@ -11,3 +11,69 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.feed-flex-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.post {
+  /* margin: auto; */
+  margin: 10px;
+  padding-bottom: 20px;
+  background-color: lightgrey;
+  width: 50%;
+  min-height: 100px;
+  border-radius: 20px;
+  transition: width 0.5s;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.post-title, .post-content {
+  visibility: hidden;
+  animation-name: makePostVisible;
+  animation-duration: 0.75s;
+  animation-timing-function: linear;
+  animation-delay: 0.75s;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-fill-mode: forwards;
+}
+
+.post.loading {
+  background-color: lightgrey;
+  width: 20%;
+  padding-bottom: 0;
+  border-radius: 20px;
+  transition: none;
+}
+
+.loading-icon {
+  width: 15px;
+  animation: loadingSpin 0.75s forwards infinite;
+}
+
+@keyframes loadingSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes makePostVisible {
+  from {
+    visibility: hidden;
+  }
+  to {
+    visibility: visible;
+  }
+}
