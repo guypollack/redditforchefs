@@ -24,14 +24,20 @@ export function PostContainer({id, data, handleClickShowMore, handleClickShowLes
       content = (
         <div className="post-content">
           <p>{cleanText(data.selftext)}</p>
-          <button id={`Show-Less-Button-${id}`} onClick={handleClickShowLess}>Show Less</button>
+          <div className="show-less-container">
+            <button id={`show-less-button-${id}`} className="show-less-button" onClick={handleClickShowLess}>Show Less</button>
+            <img className="show-less-icon" src="../../../utensils-solid.svg" />
+          </div>
         </div>
       )
     } else {
       content = (
         <div className="post-content">
           <p>{cleanText(data.selftext.slice(0,200))}...</p>
-          <button id={`Show-More-Button-${id}`} onClick={handleClickShowMore}>Show More</button>
+          <div className="show-more-container">
+            <button id={`show-more-button-${id}`} className="show-more-button" onClick={handleClickShowMore}>Show More</button>
+            <img className="show-more-icon" src="../../../utensils-solid.svg" />
+          </div>
         </div>
       )
     }
@@ -39,7 +45,7 @@ export function PostContainer({id, data, handleClickShowMore, handleClickShowLes
 
   if (data.post_hint === "image") {
     content = (
-      <div className="post-content">
+      <div className="post-content media">
         <img src={data.url} style={{width: 200}} />
       </div>
     )
@@ -50,19 +56,21 @@ export function PostContainer({id, data, handleClickShowMore, handleClickShowLes
     // console.log("AAAA");
     const source = data.media.oembed.html.split(" ")[3].slice(5,46);
     content = (
-      <div className="post-content">
-        <iframe width="585" height="329" src={source}></iframe>
+      <div className="post-content media">
+        <iframe width="450" height="253" src={source}></iframe>
       </div>
     )
   }
 
   if (data.is_gallery) {
     content = (
-      <div className="post-content">
+      <div className="post-content media">
         <img src={data.thumbnail} />
       </div>
     )
   }
+
+  console.log(data.title);
 
   return <Post user={data.author} date={data.created_utc} title={cleanText(data.title)} content={content} isLoading={isLoading} />
   

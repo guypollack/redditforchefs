@@ -13,11 +13,11 @@ export function Post({user, date, title, content, isLoading}) {
 
   return (
     <div className="post">
-      <div>
+      <div className="post-metadata">
         <p>Posted by u/{user} {dateDifference(date)}</p>
       </div>
       <div>
-        <h4 className="post-title">{title}</h4>
+        <h3 className="post-title">{title}</h3>
       </div>
       {content}
     </div>
