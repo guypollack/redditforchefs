@@ -1,3 +1,3 @@
 export function cleanText(text) {
-  return text.replace("&amp;","&");
+  return text.replaceAll("amp;","");
 }
