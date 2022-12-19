@@ -3,12 +3,13 @@ import { createSlice } from "@reduxjs/toolkit";
 export const subredditsSlice = createSlice({
   name: "subreddits",
   initialState: {
-    currentSubreddit: "https://www.reddit.com/r/ChefKnives.json",
+    currentSubreddit: "https://www.reddit.com/r/FoodHacks.json",
     subredditUrls: {
-      chefknives: "https://www.reddit.com/r/ChefKnives.json",
+      foodhacks: "https://www.reddit.com/r/FoodHacks.json",
       cooking: "https://www.reddit.com/r/Cooking.json",
       chefs: "https://www.reddit.com/r/Chefs.json",
-      foodhacks: "https://www.reddit.com/r/FoodHacks.json"
+      vegan: "https://www.reddit.com/r/Vegan.json",
+      chefknives: "https://www.reddit.com/r/ChefKnives.json"
     }
   },
   reducers: {

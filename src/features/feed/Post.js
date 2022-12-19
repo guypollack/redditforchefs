@@ -1,4 +1,6 @@
-export function Post({title, content, isLoading}) {
+import { dateDifference } from "../../util/dateDifference";
+
+export function Post({user, date, title, content, isLoading}) {
 
   if (isLoading) {
     return (
@@ -11,6 +13,9 @@ export function Post({title, content, isLoading}) {
 
   return (
     <div className="post">
+      <div>
+        <p>Posted by u/{user} {dateDifference(date)}</p>
+      </div>
       <div>
         <h4 className="post-title">{title}</h4>
       </div>

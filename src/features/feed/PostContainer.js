@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import { feedIsLoading } from "./feedSlice";
 import { Post } from "./Post";
+import { cleanText } from "../../util/cleanText.js";
 
 export function PostContainer({id, data, handleClickShowMore, handleClickShowLess}) {
   
@@ -16,20 +17,20 @@ export function PostContainer({id, data, handleClickShowMore, handleClickShowLes
     if (data.selftext.length <= 200) {
       content = (
       <div className="post-content">
-        <p>{data.selftext}</p>
+        <p>{cleanText(data.selftext)}</p>
       </div>
       )
     } else if (data.showMoreText) {
       content = (
         <div className="post-content">
-          <p>{data.selftext}</p>
+          <p>{cleanText(data.selftext)}</p>
           <button id={`Show-Less-Button-${id}`} onClick={handleClickShowLess}>Show Less</button>
         </div>
       )
     } else {
       content = (
         <div className="post-content">
-          <p>{data.selftext.slice(0,200)}...</p>
+          <p>{cleanText(data.selftext.slice(0,200))}...</p>
           <button id={`Show-More-Button-${id}`} onClick={handleClickShowMore}>Show More</button>
         </div>
       )
@@ -63,6 +64,6 @@ export function PostContainer({id, data, handleClickShowMore, handleClickShowLes
     )
   }
 
-  return <Post title={data.title} content={content} isLoading={isLoading} />
+  return <Post user={data.author} date={data.created_utc} title={cleanText(data.title)} content={content} isLoading={isLoading} />
   
 }
