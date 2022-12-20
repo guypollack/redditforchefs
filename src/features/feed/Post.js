@@ -1,6 +1,6 @@
 import { dateDifference } from "../../util/dateDifference";
 
-export function Post({user, date, title, content, isLoading}) {
+export function Post({user, date, title, content, button, isLoading}) {
 
   if (isLoading) {
     return (
@@ -20,6 +20,7 @@ export function Post({user, date, title, content, isLoading}) {
         <h3 className="post-title">{title}</h3>
       </div>
       {content}
+      {button && button}
     </div>
   )
 }

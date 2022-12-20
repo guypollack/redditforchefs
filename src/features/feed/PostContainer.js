@@ -12,6 +12,7 @@ export function PostContainer({id, data, handleClickShowMore, handleClickShowLes
   if (data.post_hint === "hosted:video") return;
 
   let content;
+  let button;
   
   if (data.selftext) {
     if (data.selftext.length <= 200) {
@@ -24,20 +25,26 @@ export function PostContainer({id, data, handleClickShowMore, handleClickShowLes
       content = (
         <div className="post-content">
           <p>{cleanText(data.selftext)}</p>
-          <div className="show-less-container">
-            <button id={`show-less-button-${id}`} className="show-less-button" onClick={handleClickShowLess}>Show Less</button>
-            <img className="show-less-icon" src="../../../utensils-solid.svg" />
-          </div>
+        </div>
+      )
+      
+      button = (
+        <div className="show-less-container">
+          <button id={`show-less-button-${id}`} className="show-less-button" onClick={handleClickShowLess}>Show Less</button>
+          <img className="show-less-icon" src="../../../utensils-solid.svg" />
         </div>
       )
     } else {
       content = (
         <div className="post-content">
           <p>{cleanText(data.selftext.slice(0,200))}...</p>
-          <div className="show-more-container">
-            <button id={`show-more-button-${id}`} className="show-more-button" onClick={handleClickShowMore}>Show More</button>
-            <img className="show-more-icon" src="../../../utensils-solid.svg" />
-          </div>
+        </div>
+      )
+
+      button = (
+        <div className="show-more-container">
+          <button id={`show-more-button-${id}`} className="show-more-button" onClick={handleClickShowMore}>Show More</button>
+          <img className="show-more-icon" src="../../../utensils-solid.svg" />
         </div>
       )
     }
@@ -72,6 +79,6 @@ export function PostContainer({id, data, handleClickShowMore, handleClickShowLes
 
   console.log(data.title);
 
-  return <Post user={data.author} date={data.created_utc} title={cleanText(data.title)} content={content} isLoading={isLoading} />
+  return <Post user={data.author} date={data.created_utc} title={cleanText(data.title)} content={content} button={button} isLoading={isLoading} />
   
 }
