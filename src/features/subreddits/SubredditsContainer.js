@@ -21,7 +21,7 @@ export function SubredditsContainer() {
   return (
     <div className="subreddits-container">
       {Object.keys(subreddits).map((subredditName, index) => {
-        return <Subreddit key={`Subreddit-${index}`} id={`Subreddit-${index}`} name={subredditName} url={subreddits[subredditName]} logoPath={logos[subredditName]} onClick={handleClick} />
+        return <Subreddit key={`Subreddit-${index}`} id={`Subreddit-${index}`} name={subredditName} url={subreddits[subredditName]} logoPath={logos[subredditName]} selected={subreddits[subredditName] === currentSubreddit} onClick={handleClick} />
       })}
     </div>
   )
