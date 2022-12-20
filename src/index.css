@@ -18,6 +18,41 @@ code {
   flex-direction: column;
 }
 
+.subreddits-container {
+  position: relative;
+  margin: 15px auto;
+  /* top: 10px; */
+  display: flex;
+  flex-wrap: wrap;
+  width: 50%;
+  justify-content: space-evenly;
+  /* border: 1px solid black; */
+}
+
+.subreddit-button-container {
+  flex-basis: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.subreddit-logo {
+  width: 50px;
+  border-radius: 25px;
+  margin-top: 10px;
+}
+
+.subreddit-button {
+  border: none;
+  background-color: rgba(0,0,0,0);
+  font-size: smaller;
+  font-weight: bold;
+}
+
+.subreddit-button:hover {
+  cursor: pointer;
+}
+
 .post {
   /* margin: auto; */
   margin: 10px;
@@ -113,6 +148,10 @@ label {
   background-color: white;
   font-weight: bold;
   font-size: smaller;
+}
+
+.show-more-button:hover, .show-less-button:hover {
+  cursor: pointer;
 }
 
 .loading-icon {
