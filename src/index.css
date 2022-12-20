@@ -131,11 +131,27 @@ label {
 .show-more-container, .show-less-container {
   display: flex;
   justify-content: center;
+  visibility: hidden;
+  animation-name: makePostVisible;
+  animation-duration: 0.75s;
+  animation-timing-function: linear;
+  animation-delay: 0.75s;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-fill-mode: forwards;
 }
 
 .show-more-icon, .show-less-icon {
   width: 15px;
   transition: transform 0.3s;
+  visibility: hidden;
+  animation-name: makePostVisible;
+  animation-duration: 0.75s;
+  animation-timing-function: linear;
+  animation-delay: 0.75s;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-fill-mode: forwards;
 }
 
 .show-less-icon {
